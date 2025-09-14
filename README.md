@@ -2,12 +2,14 @@
 
 ## Description
 
-This project provides a setup for developing applications using LangChain, a powerful framework for building applications with large language models (LLMs). It includes a Python 3.10 environment managed by Conda and the core LangChain dependency.
+This project provides a setup for developing applications using LangChain with OpenAI integration. It includes environment variable management for API keys and the core LangChain dependency.
 
 ## Prerequisites
 
 - Conda (Miniconda or Anaconda)
 - macOS (osx-arm64 platform)
+- OpenAI API key (obtain from https://platform.openai.com/)
+- LangChain API key (obtain from https://www.langchain.com/)
 
 ## Installation
 
@@ -29,9 +31,28 @@ This project provides a setup for developing applications using LangChain, a pow
    pip install -r requirements.txt
    ```
 
+4. Create a `.env` file in the project root and add your API keys:
+
+   ```
+   OPEN_API_KEY=your_openai_key
+   LANGCHAIN_API_KEY=your_langchain_key
+   LANGCHAIN_PROJECT=your_project_name
+   ```
+
 ## Dependencies
 
 - langchain: The core framework for building LLM applications.
+- python-dotenv: For loading environment variables from .env file.
+
+## Environment Variables
+
+The project uses the following environment variables:
+
+- `OPEN_API_KEY`: Your OpenAI API key for accessing OpenAI services.
+- `LANGCHAIN_API_KEY`: Your LangChain API key for LangChain services.
+- `LANGCHAIN_PROJECT`: The name of your LangChain project.
+
+Create a `.env` file in the project root and populate these variables. Do not commit `.env` to version control.
 
 ## Notes
 
@@ -44,6 +65,9 @@ This project provides a setup for developing applications using LangChain, a pow
 Add your LangChain code here. For example:
 
 ```python
+from dotenv import load_dotenv
+load_dotenv()
+
 from langchain.llms import OpenAI
 # Your code here
 ```
