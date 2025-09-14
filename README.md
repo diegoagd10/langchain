@@ -43,6 +43,8 @@ This project provides a setup for developing applications using LangChain with O
 
 - langchain: The core framework for building LLM applications.
 - python-dotenv: For loading environment variables from .env file.
+- ipykernel: For running Jupyter notebooks.
+- langchain_community: For community-contributed document loaders and integrations.
 
 ## Environment Variables
 
@@ -71,6 +73,17 @@ load_dotenv()
 from langchain.llms import OpenAI
 # Your code here
 ```
+
+## Examples
+
+### Data Ingestion
+
+The `1-Langchain/1-DataIngestion/` directory contains examples of data ingestion using LangChain.
+
+- `DataIngestion.ipynb`: A Jupyter notebook demonstrating how to load text documents using the TextLoader from langchain_community.
+- `speech.txt`: Sample text file used in the data ingestion example.
+
+To run the notebook, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
 ## Contributing
 
