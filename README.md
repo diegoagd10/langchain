@@ -2,7 +2,7 @@
 
 ## Description
 
-This project provides a setup for developing applications using LangChain with OpenAI integration. It includes environment variable management for API keys and the core LangChain dependency.
+This project provides a setup for developing applications using LangChain with OpenAI integration, featuring comprehensive data ingestion capabilities from diverse sources including text files, PDFs, web pages, and academic papers. It includes environment variable management for API keys and the core LangChain dependency.
 
 ## Prerequisites
 
@@ -45,6 +45,10 @@ This project provides a setup for developing applications using LangChain with O
 - python-dotenv: For loading environment variables from .env file.
 - ipykernel: For running Jupyter notebooks.
 - langchain_community: For community-contributed document loaders and integrations.
+- pypdf: For loading and processing PDF documents.
+- bs4: BeautifulSoup for web scraping and HTML parsing.
+- arxiv: For loading documents from ArXiv.
+- pymupdf: Alternative PDF processing library.
 
 ## Environment Variables
 
@@ -78,10 +82,15 @@ from langchain.llms import OpenAI
 
 ### Data Ingestion
 
-The `1-Langchain/1-DataIngestion/` directory contains examples of data ingestion using LangChain.
+The `1-Langchain/1-DataIngestion/` directory contains comprehensive examples of data ingestion using LangChain's document loaders.
 
-- `DataIngestion.ipynb`: A Jupyter notebook demonstrating how to load text documents using the TextLoader from langchain_community.
-- `speech.txt`: Sample text file used in the data ingestion example.
+- `DataIngestion.ipynb`: A Jupyter notebook demonstrating various document loaders:
+  - TextLoader for loading text files (e.g., `speech.txt`).
+  - PyPDFLoader for loading PDF documents (e.g., `attention.pdf`).
+  - WebBaseLoader for loading web pages, with optional BeautifulSoup parsing for targeted content extraction.
+  - ArxivLoader for loading academic papers from ArXiv.
+- `speech.txt`: Sample text file containing information about transformers.
+- `attention.pdf`: Sample PDF file (likely the "Attention Is All You Need" paper).
 
 To run the notebook, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
