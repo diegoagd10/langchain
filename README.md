@@ -49,6 +49,7 @@ This project provides a setup for developing applications using LangChain with O
 - bs4: BeautifulSoup for web scraping and HTML parsing.
 - arxiv: For loading documents from ArXiv.
 - pymupdf: Alternative PDF processing library.
+- langchain-text-splitters: For text splitting utilities.
 
 ## Environment Variables
 
@@ -85,14 +86,25 @@ from langchain.llms import OpenAI
 The `1-Langchain/1-DataIngestion/` directory contains comprehensive examples of data ingestion using LangChain's document loaders.
 
 - `DataIngestion.ipynb`: A Jupyter notebook demonstrating various document loaders:
-  - TextLoader for loading text files (e.g., `speech.txt`).
-  - PyPDFLoader for loading PDF documents (e.g., `attention.pdf`).
+  - TextLoader for loading text files (e.g., `../resources/speech.txt`).
+  - PyPDFLoader for loading PDF documents (e.g., `../resources/attention.pdf`).
   - WebBaseLoader for loading web pages, with optional BeautifulSoup parsing for targeted content extraction.
   - ArxivLoader for loading academic papers from ArXiv.
-- `speech.txt`: Sample text file containing information about transformers.
-- `attention.pdf`: Sample PDF file (likely the "Attention Is All You Need" paper).
+- `../resources/speech.txt`: Sample text file containing information about transformers.
+- `../resources/attention.pdf`: Sample PDF file (likely the "Attention Is All You Need" paper).
 
 To run the notebook, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
+
+### Text Splitting
+
+The `1-Langchain/2-TextSplitter/` directory contains comprehensive examples of text splitting using LangChain's text splitters.
+
+- `CharacterTextSplitter.ipynb`: Demonstrates character-based text splitting for well-formatted documents using separators like "\n\n".
+- `RecursiveTextSplitter.ipynb`: Shows recursive character text splitting for simple text formats, splitting by common parameters like ["\n", "\n\n", "", " "].
+- `HTMLTextSplitter.ipynb`: Examples of splitting HTML content by specified HTML tags.
+- `JSONTextSplitter.ipynb`: JSON text splitting by JSON values.
+
+To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
 ## Contributing
 
