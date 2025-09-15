@@ -2,7 +2,7 @@
 
 ## Description
 
-This project provides a setup for developing applications using LangChain with OpenAI integration, featuring comprehensive data ingestion capabilities from diverse sources including text files, PDFs, web pages, and academic papers. It includes environment variable management for API keys and the core LangChain dependency.
+This project provides a setup for developing applications using LangChain with OpenAI and Ollama integration, featuring comprehensive data ingestion, text splitting, embeddings, and vector storage capabilities from diverse sources including text files, PDFs, web pages, and academic papers. It includes environment variable management for API keys and the core LangChain dependency.
 
 ## Prerequisites
 
@@ -50,6 +50,11 @@ This project provides a setup for developing applications using LangChain with O
 - arxiv: For loading documents from ArXiv.
 - pymupdf: Alternative PDF processing library.
 - langchain-text-splitters: For text splitting utilities.
+- langchain-openai: For OpenAI embeddings and integrations.
+- langchain-ollama: For Ollama embeddings and local LLM integrations.
+- chromadb: Vector database for storing and retrieving embeddings.
+- sentence_transformers: For sentence-level embeddings using transformer models.
+- langchain-huggingface: For Hugging Face integrations in LangChain.
 
 ## Environment Variables
 
@@ -103,6 +108,15 @@ The `1-Langchain/2-TextSplitter/` directory contains comprehensive examples of t
 - `RecursiveTextSplitter.ipynb`: Shows recursive character text splitting for simple text formats, splitting by common parameters like ["\n", "\n\n", "", " "].
 - `HTMLTextSplitter.ipynb`: Examples of splitting HTML content by specified HTML tags.
 - `JSONTextSplitter.ipynb`: JSON text splitting by JSON values.
+
+To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
+
+### Embeddings
+
+The `1-Langchain/3-Embeddings/` directory contains examples of generating embeddings using different providers.
+
+- `OllamaEmbedding.ipynb`: Demonstrates using Ollama for local embeddings (e.g., gemma:2b model), document and query embedding, text loading and splitting, creating vector stores with Chroma, and performing similarity searches.
+- `OpenAIEmbedding.ipynb`: Shows how to use OpenAI embeddings (e.g., text-embedding-3-large), with options for dimensionality reduction, and the same workflow for vector storage and retrieval.
 
 To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
