@@ -120,6 +120,15 @@ The `1-Langchain/3-Embeddings/` directory contains examples of generating embedd
 
 To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
+### Vector Stores
+
+The `1-Langchain/4-VectorStore/` directory contains examples of vector storage using different providers.
+
+- `Faiss.ipynb`: Demonstrates using FAISS for similarity search and clustering sentence vectors, including saving and loading the index.
+- `Chroma.ipynb`: Shows how to use Chroma vector database for storing and retrieving embeddings, with persistence to disk.
+
+To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
+
 ## Contributing
 
 [Add contributing guidelines if needed]
