@@ -2,14 +2,14 @@
 
 ## Description
 
-This project provides a setup for developing applications using LangChain with OpenAI and Ollama integration, featuring comprehensive data ingestion, text splitting, embeddings, and vector storage capabilities from diverse sources including text files, PDFs, web pages, and academic papers. It includes environment variable management for API keys and the core LangChain dependency.
+This project provides a setup for developing applications using LangChain with OpenAI and Ollama integration, featuring comprehensive data ingestion, text splitting, embeddings, vector storage, and generative AI capabilities from diverse sources including text files, PDFs, web pages, and academic papers. It includes environment variable management for API keys and the core LangChain dependency.
 
 ## Prerequisites
 
 - Conda (Miniconda or Anaconda)
 - macOS (osx-arm64 platform)
 - OpenAI API key (obtain from https://platform.openai.com/)
-- LangChain API key (obtain from https://www.langchain.com/)
+- LangSmith API key (obtain from https://smith.langchain.com/)
 
 ## Installation
 
@@ -34,9 +34,11 @@ This project provides a setup for developing applications using LangChain with O
 4. Create a `.env` file in the project root and add your API keys:
 
    ```
-   OPEN_API_KEY=your_openai_key
-   LANGCHAIN_API_KEY=your_langchain_key
-   LANGCHAIN_PROJECT=your_project_name
+   OPENAI_API_KEY=your_openai_key
+   LANGSMITH_API_KEY=your_langsmith_key
+   LANGSMITH_TRACING=true
+   LANGSMITH_PROJECT=your_project_name
+   LANGSMITH_WORKSPACE_ID=your_workspace_id
    ```
 
 ## Dependencies
@@ -60,9 +62,11 @@ This project provides a setup for developing applications using LangChain with O
 
 The project uses the following environment variables:
 
-- `OPEN_API_KEY`: Your OpenAI API key for accessing OpenAI services.
-- `LANGCHAIN_API_KEY`: Your LangChain API key for LangChain services.
-- `LANGCHAIN_PROJECT`: The name of your LangChain project.
+- `OPENAI_API_KEY`: Your OpenAI API key for accessing OpenAI services.
+- `LANGSMITH_API_KEY`: Your LangSmith API key for tracing and monitoring.
+- `LANGSMITH_TRACING`: Set to "true" to enable tracing.
+- `LANGSMITH_PROJECT`: The name of your LangSmith project.
+- `LANGSMITH_WORKSPACE_ID`: Your LangSmith workspace ID.
 
 Create a `.env` file in the project root and populate these variables. Do not commit `.env` to version control.
 
@@ -126,6 +130,14 @@ The `1-Langchain/4-VectorStore/` directory contains examples of vector storage u
 
 - `Faiss.ipynb`: Demonstrates using FAISS for similarity search and clustering sentence vectors, including saving and loading the index.
 - `Chroma.ipynb`: Shows how to use Chroma vector database for storing and retrieving embeddings, with persistence to disk.
+
+To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
+
+### Generative AI
+
+The `2-Generative AI/` directory contains examples for generative AI applications using LangChain.
+
+- `1.1 OpenAI/GettingStarted.ipynb`: A Jupyter notebook demonstrating getting started with OpenAI's GPT models, including environment setup with LangSmith tracing, creating chat prompts, chaining with output parsers, and answering questions based on provided context.
 
 To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
