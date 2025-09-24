@@ -137,7 +137,8 @@ To run the notebooks, ensure you have Jupyter installed and run `jupyter noteboo
 
 The `2-Generative AI/` directory contains examples for generative AI applications using LangChain.
 
-- `1.1 OpenAI/GettingStarted.ipynb`: A Jupyter notebook demonstrating getting started with OpenAI's GPT models, including environment setup with LangSmith tracing, creating chat prompts, chaining with output parsers, and answering questions based on provided context.
+- `1.1 OpenAI/1-GettingStarted.ipynb`: A Jupyter notebook demonstrating getting started with OpenAI's GPT models, including environment setup with LangSmith tracing, creating chat prompts, chaining with output parsers, and answering questions based on provided context.
+- `1.1 OpenAI/2-ChatWithWebPage.ipynb`: A Jupyter notebook demonstrating how to load web page content, split text, create embeddings with OpenAI, store in a Chroma vector database, and perform retrieval-based question answering using LangChain.
 
 To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
 
