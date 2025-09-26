@@ -57,6 +57,9 @@ This project provides a setup for developing applications using LangChain with O
 - chromadb: Vector database for storing and retrieving embeddings.
 - sentence_transformers: For sentence-level embeddings using transformer models.
 - langchain-huggingface: For Hugging Face integrations in LangChain.
+- faiss-cpu: FAISS vector database for similarity search and clustering (CPU version).
+- langchain_chroma: LangChain integration for ChromaDB vector database.
+- streamlit: Web framework for creating interactive web applications.
 
 ## Environment Variables
 
@@ -137,10 +140,26 @@ To run the notebooks, ensure you have Jupyter installed and run `jupyter noteboo
 
 The `2-Generative AI/` directory contains examples for generative AI applications using LangChain.
 
-- `1.1 OpenAI/1-GettingStarted.ipynb`: A Jupyter notebook demonstrating getting started with OpenAI's GPT models, including environment setup with LangSmith tracing, creating chat prompts, chaining with output parsers, and answering questions based on provided context.
-- `1.1 OpenAI/2-ChatWithWebPage.ipynb`: A Jupyter notebook demonstrating how to load web page content, split text, create embeddings with OpenAI, store in a Chroma vector database, and perform retrieval-based question answering using LangChain.
+- `2.1 OpenAI/1-GettingStarted.ipynb`: A Jupyter notebook demonstrating getting started with OpenAI's GPT models, including environment setup with LangSmith tracing, creating chat prompts, chaining with output parsers, and answering questions based on provided context.
+- `2.1 OpenAI/2-ChatWithWebPage.ipynb`: A Jupyter notebook demonstrating how to load web page content, split text, create embeddings with OpenAI, store in a Chroma vector database, and perform retrieval-based question answering using LangChain.
 
 To run the notebooks, ensure you have Jupyter installed and run `jupyter notebook` in the project directory.
+
+### Ollama Integration
+
+The `2-Generative AI/2.2 Ollama/` directory contains a Streamlit web application demonstrating local LLM integration using Ollama.
+
+- `app.py`: A Streamlit web application that integrates with Ollama's Gemma 3 1B model for conversational AI. Features include:
+- Environment setup with LangSmith tracing
+- Chat prompt templates using LangChain
+- Real-time conversation interface with Streamlit
+- Integration with local Ollama models (requires Ollama to be installed and running)
+
+To run the application:
+
+1. Install and start Ollama from https://ollama.com/
+2. Pull the Gemma model: `ollama pull gemma3:1b`
+3. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.2\ Ollama/app.py`
 
 ## Contributing
 
