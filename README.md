@@ -327,6 +327,57 @@ To run the notebook:
 2. The agent will use OpenAI's GPT-4o model and requires appropriate API keys
 3. All tools work with LangSmith tracing for observability
 
+### Data Extraction
+
+The project includes examples of structured data extraction from unstructured text using LangChain's extraction capabilities with tool-calling features.
+
+- **Extraction Tutorial**: Based on [LangChain's Extraction Tutorial](https://python.langchain.com/docs/tutorials/extraction/), this demonstrates how to extract structured information from text using Pydantic schemas and chat models that support tool calling.
+
+#### Simple Example
+
+Here's a basic example of extracting person information from text:
+
+```python
+from typing import Optional
+from pydantic import BaseModel, Field
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chat_models import init_chat_model
+
+class Person(BaseModel):
+    """Information about a person."""
+    name: Optional[str] = Field(default=None, description="The name of the person")
+    hair_color: Optional[str] = Field(
+        default=None, description="The color of the person's hair if known"
+    )
+    height_in_meters: Optional[str] = Field(
+        default=None, description="Height measured in meters"
+    )
+
+# Initialize the model (requires API key setup)
+llm = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
+structured_llm = llm.with_structured_output(schema=Person)
+
+# Example text
+text = "Alan Smith is 6 feet tall and has blond hair."
+prompt_template = ChatPromptTemplate.from_messages([
+    ("system", "You are an expert extraction algorithm. Only extract relevant information from the text."),
+    ("human", "{text}")
+])
+
+prompt = prompt_template.invoke({"text": text})
+result = structured_llm.invoke(prompt)
+print(result)  # Person(name='Alan Smith', hair_color='blond', height_in_meters='1.83')
+```
+
+This example demonstrates:
+
+- Defining a Pydantic schema for structured output
+- Using chat models with tool-calling capabilities
+- Extracting multiple attributes from unstructured text
+- Automatic conversion of units (feet to meters)
+
+For more advanced examples including multiple entities and reference examples, see the [full tutorial](https://python.langchain.com/docs/tutorials/extraction/).
+
 ## Contributing
 
 [Add contributing guidelines if needed]
