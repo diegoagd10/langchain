@@ -10,6 +10,7 @@ This project provides a setup for developing applications using LangChain with O
 - macOS (osx-arm64 platform)
 - OpenAI API key (obtain from https://platform.openai.com/)
 - LangSmith API key (obtain from https://smith.langchain.com/)
+- Groq API key (obtain from https://groq.com/)
 
 ## Installation
 
@@ -39,6 +40,7 @@ This project provides a setup for developing applications using LangChain with O
    LANGSMITH_TRACING=true
    LANGSMITH_PROJECT=your_project_name
    LANGSMITH_WORKSPACE_ID=your_workspace_id
+   GROQ_API_KEY=your_groq_key
    ```
 
 ## Dependencies
@@ -60,6 +62,12 @@ This project provides a setup for developing applications using LangChain with O
 - faiss-cpu: FAISS vector database for similarity search and clustering (CPU version).
 - langchain_chroma: LangChain integration for ChromaDB vector database.
 - streamlit: Web framework for creating interactive web applications.
+- langchain_groq: For Groq API integrations in LangChain.
+- langserve: Framework for deploying LangChain applications as APIs.
+- fastapi: Modern, fast web framework for building APIs.
+- uvicorn: ASGI web server implementation for Python.
+- sse_starlette: Server-sent events implementation for Starlette.
+- pydantic==2.9: Data validation and settings management using Python type annotations.
 
 ## Environment Variables
 
@@ -70,6 +78,7 @@ The project uses the following environment variables:
 - `LANGSMITH_TRACING`: Set to "true" to enable tracing.
 - `LANGSMITH_PROJECT`: The name of your LangSmith project.
 - `LANGSMITH_WORKSPACE_ID`: Your LangSmith workspace ID.
+- `GROQ_API_KEY`: Your Groq API key for accessing Groq's fast inference services.
 
 Create a `.env` file in the project root and populate these variables. Do not commit `.env` to version control.
 
@@ -160,6 +169,54 @@ To run the application:
 1. Install and start Ollama from https://ollama.com/
 2. Pull the Gemma model: `ollama pull gemma3:1b`
 3. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.2\ Ollama/app.py`
+
+### Groq Integration
+
+The `2-Generative AI/2.3 Groq/` directory contains examples of using Groq's fast inference API with LangChain.
+
+- `1-ChatWithWebPage.ipynb`: A Jupyter notebook demonstrating how to use Groq's API for fast LLM inference, including:
+  - Environment setup with Groq API key
+  - LangSmith tracing integration
+  - ChatGroq model initialization and usage
+  - Web page content processing with Groq models
+
+To run the notebook:
+
+1. Obtain a Groq API key from https://groq.com/
+2. Add `GROQ_API_KEY=your_groq_key` to your `.env` file
+3. Ensure you have Jupyter installed and run `jupyter notebook` in the project directory
+
+### API Development
+
+The `3-API/` directory contains a complete API server setup using FastAPI and LangServe for deploying LangChain applications.
+
+- `app.py`: FastAPI server that exposes LangChain models and prompts via REST endpoints:
+
+  - OpenAI model endpoint at `/openai`
+  - Essay generation endpoint at `/essay` (templated prompts)
+  - Poem generation endpoint at `/poem` (templated prompts)
+  - LangSmith tracing integration
+  - Support for both OpenAI and local Ollama models
+
+- `client.py`: Streamlit client application that consumes the API:
+  - Interactive web interface for testing API endpoints
+  - Separate inputs for essay and poem generation
+  - Real-time API consumption and result display
+
+To run the API server:
+
+1. Start the server: `python 3-API/app.py`
+2. The API will be available at `http://localhost:3000`
+3. Available endpoints:
+   - `GET /openai`: Direct OpenAI model access
+   - `POST /essay/invoke`: Generate essays with custom topics
+   - `POST /poem/invoke`: Generate poems with custom topics
+
+To run the client application:
+
+```bash
+streamlit run 3-API/client.py
+```
 
 ## Contributing
 
