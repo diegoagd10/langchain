@@ -68,6 +68,7 @@ This project provides a setup for developing applications using LangChain with O
 - uvicorn: ASGI web server implementation for Python.
 - sse_starlette: Server-sent events implementation for Starlette.
 - pydantic==2.9: Data validation and settings management using Python type annotations.
+- wikipedia: Python library for accessing Wikipedia's API.
 
 ## Environment Variables
 
@@ -217,6 +218,38 @@ To run the client application:
 ```bash
 streamlit run 3-API/client.py
 ```
+
+### Agents
+
+The `3-Agents/` directory contains examples of autonomous AI agents using LangChain's agent framework with multiple specialized tools.
+
+- `agents.ipynb`: A comprehensive Jupyter notebook demonstrating the creation and usage of AI agents with multiple tools:
+  - **Wikipedia Tool**: Query Wikipedia articles with configurable result limits
+  - **Web Document Retrieval**: Load web pages and create vector stores using ChromaDB
+  - **ArXiv Research Tool**: Search and retrieve academic papers from ArXiv
+  - **Custom Retriever Tool**: Specialized tool for LangServe documentation queries
+  - **OpenAI Functions Agent**: GPT-4o powered agent that intelligently selects and uses tools
+  - **Agent Executor**: Manages agent execution with verbose reasoning output
+
+Key Features:
+
+- Multi-tool integration for comprehensive research capabilities
+- Vector-based document retrieval for context-aware responses
+- Academic paper analysis and summarization
+- Intelligent tool selection based on user queries
+- Real-time reasoning and tool execution tracking
+
+Example use cases demonstrated:
+
+- Answering questions about LangServe
+- Explaining machine learning concepts
+- Analyzing specific academic papers by ArXiv ID
+
+To run the notebook:
+
+1. Ensure you have Jupyter installed and run `jupyter notebook` in the project directory
+2. The agent will use OpenAI's GPT-4o model and requires appropriate API keys
+3. All tools work with LangSmith tracing for observability
 
 ## Contributing
 
