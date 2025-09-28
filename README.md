@@ -45,30 +45,56 @@ This project provides a setup for developing applications using LangChain with O
 
 ## Dependencies
 
-- langchain: The core framework for building LLM applications.
+The project dependencies are organized into the following categories:
+
+### Core/Base Libraries
+
+- pydantic==2.9: Data validation and settings management using Python type annotations.
 - python-dotenv: For loading environment variables from .env file.
-- ipykernel: For running Jupyter notebooks.
+
+### LangChain Ecosystem
+
+- langchain: The core framework for building LLM applications.
 - langchain_community: For community-contributed document loaders and integrations.
-- pypdf: For loading and processing PDF documents.
-- bs4: BeautifulSoup for web scraping and HTML parsing.
-- arxiv: For loading documents from ArXiv.
-- pymupdf: Alternative PDF processing library.
 - langchain-text-splitters: For text splitting utilities.
-- langchain-openai: For OpenAI embeddings and integrations.
-- langchain-ollama: For Ollama embeddings and local LLM integrations.
-- chromadb: Vector database for storing and retrieving embeddings.
+
+### AI/ML Libraries
+
 - sentence_transformers: For sentence-level embeddings using transformer models.
 - langchain-huggingface: For Hugging Face integrations in LangChain.
+
+### Vector Databases and Storage
+
+- chromadb: Vector database for storing and retrieving embeddings.
 - faiss-cpu: FAISS vector database for similarity search and clustering (CPU version).
 - langchain_chroma: LangChain integration for ChromaDB vector database.
-- streamlit: Web framework for creating interactive web applications.
+
+### Document Processing
+
+- pypdf: For loading and processing PDF documents.
+- bs4: BeautifulSoup for web scraping and HTML parsing.
+- pymupdf: Alternative PDF processing library.
+- arxiv: For loading documents from ArXiv.
+- wikipedia: Python library for accessing Wikipedia's API.
+
+### LLM Providers
+
+- langchain-openai: For OpenAI embeddings and integrations.
+- langchain-ollama: For Ollama embeddings and local LLM integrations.
+- groq: Direct Groq API client library.
 - langchain_groq: For Groq API integrations in LangChain.
-- langserve: Framework for deploying LangChain applications as APIs.
+
+### Web Frameworks
+
 - fastapi: Modern, fast web framework for building APIs.
 - uvicorn: ASGI web server implementation for Python.
 - sse_starlette: Server-sent events implementation for Starlette.
-- pydantic==2.9: Data validation and settings management using Python type annotations.
-- wikipedia: Python library for accessing Wikipedia's API.
+- streamlit: Web framework for creating interactive web applications.
+
+### Development and Runtime Tools
+
+- ipykernel: For running Jupyter notebooks.
+- langserve: Framework for deploying LangChain applications as APIs.
 
 ## Environment Variables
 
@@ -173,19 +199,31 @@ To run the application:
 
 ### Groq Integration
 
-The `2-Generative AI/2.3 Groq/` directory contains examples of using Groq's fast inference API with LangChain.
+The `2-Generative AI/2.3 Groq/` directory contains a Streamlit web application demonstrating Groq's fast inference API with RAG (Retrieval-Augmented Generation).
 
-- `1-ChatWithWebPage.ipynb`: A Jupyter notebook demonstrating how to use Groq's API for fast LLM inference, including:
-  - Environment setup with Groq API key
-  - LangSmith tracing integration
-  - ChatGroq model initialization and usage
-  - Web page content processing with Groq models
+- `app.py`: A Streamlit web application that combines Groq's fast inference with document retrieval:
+  - **Web Document Loading**: Loads content from Vatican website (Lumen Fidei encyclical)
+  - **Document Processing**: Splits documents using RecursiveCharacterTextSplitter
+  - **Vector Storage**: Creates ChromaDB vector database with Ollama embeddings
+  - **Groq Integration**: Uses Llama 3.1 8B model for fast inference
+  - **Retrieval Chain**: Combines document retrieval with Groq responses
+  - **Session State**: Caches vector database for improved performance
+  - **Interactive UI**: Streamlit interface for asking questions about the loaded content
 
-To run the notebook:
+Key Features:
+
+- Real-time document question answering
+- Fast inference using Groq's API
+- Context-aware responses based on loaded documents
+- Persistent vector storage during session
+- LangSmith tracing integration
+
+To run the application:
 
 1. Obtain a Groq API key from https://groq.com/
 2. Add `GROQ_API_KEY=your_groq_key` to your `.env` file
-3. Ensure you have Jupyter installed and run `jupyter notebook` in the project directory
+3. Ensure Ollama is running with `mxbai-embed-large` model: `ollama pull mxbai-embed-large:latest`
+4. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.3\ Groq/app.py`
 
 ### API Development
 

@@ -1,24 +1,40 @@
-langchain
+# Core/Base Libraries - Foundational packages that others depend on
+pydantic==2.9
 python-dotenv
-ipykernel
+
+# LangChain Ecosystem - Core framework and extensions
+langchain
 langchain_community
-pypdf
-bs4
-arxiv
-pymupdf
 langchain-text-splitters
-langchain-openai
-langchain-ollama
-chromadb
+
+# AI/ML Libraries - Machine learning and embedding models
 sentence_transformers
 langchain-huggingface
+
+# Vector Databases and Storage - Vector storage and retrieval systems
+chromadb
 faiss-cpu
 langchain_chroma
-streamlit
+
+# Document Processing - PDF, web scraping, and content extraction
+pypdf
+bs4
+pymupdf
+arxiv
+wikipedia
+
+# LLM Providers - Language model integrations
+langchain-openai
+langchain-ollama
+groq
 langchain_groq
-langserve
+
+# Web Frameworks - API and UI frameworks
 fastapi
 uvicorn
 sse_starlette
-pydantic==2.9
-wikipedia
+streamlit
+
+# Development and Runtime Tools
+ipykernel
+langserve
