@@ -209,3 +209,6 @@ __marimo__/
 # Vector Store persistent files
 faiss_index/
 chroma_db/
+
+# Others
+docs/

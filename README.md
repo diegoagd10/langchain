@@ -263,6 +263,44 @@ To run the application:
 2. Add `GROQ_API_KEY=your_groq_key` to your `.env` file
 3. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.4\ Classification/app.py`
 
+### Q&A Bot
+
+The `2-Generative AI/2.5 Q&A Bot/` directory contains a Streamlit web application for document-based question answering using Retrieval-Augmented Generation (RAG).
+
+- `app.py`: A comprehensive Q&A application that combines document retrieval with Groq's fast inference:
+
+  - **Document Processing**: Loads PDF documents from a `./docs` directory using PyPDFDirectoryLoader
+  - **Text Splitting**: Uses RecursiveCharacterTextSplitter to break documents into manageable chunks (1000 chars, 200 overlap)
+  - **Vector Embeddings**: Creates FAISS vector database using OpenAI embeddings for semantic search
+  - **Question Answering**: Uses Groq's Llama 3.3 70B model for accurate, context-aware responses
+  - **Retrieval Chain**: Combines document retrieval with LLM generation for precise answers
+  - **Interactive UI**: Streamlit interface for uploading documents and asking questions
+  - **Performance Tracking**: Displays response generation time and relevant document chunks
+  - **Session Management**: Caches vector database for improved performance across questions
+
+Key Features:
+
+- Real-time document question answering with RAG
+- Fast inference using Groq's Llama 3.3 70B model
+- Context-aware responses based on loaded PDF documents
+- Persistent vector storage during session
+- Document similarity search with chunk visualization
+- Performance metrics and error handling
+- LangSmith tracing integration for observability
+
+To run the application:
+
+1. Create a `./docs` directory in your project root and add PDF documents
+2. Obtain Groq API key from https://groq.com/ and OpenAI API key from https://platform.openai.com/
+3. Add both API keys to your `.env` file:
+   ```
+   GROQ_API_KEY=your_groq_key
+   OPENAI_API_KEY=your_openai_key
+   ```
+4. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.5\ Q&A\ Bot/app.py`
+
+The application will process your PDF documents and allow you to ask questions about their content with accurate, context-aware responses.
+
 ### API Development
 
 The `3-API/` directory contains a complete API server setup using FastAPI and LangServe for deploying LangChain applications.
