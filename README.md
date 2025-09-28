@@ -225,6 +225,44 @@ To run the application:
 3. Ensure Ollama is running with `mxbai-embed-large` model: `ollama pull mxbai-embed-large:latest`
 4. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.3\ Groq/app.py`
 
+### Text Classification
+
+The `2-Generative AI/2.4 Classification/` directory contains a Streamlit web application for text classification using structured output with Pydantic models.
+
+- `app.py`: Main Streamlit application that provides two classification modes:
+
+  - **Basic Classification**: Free-form text analysis with open-ended categories
+  - **Detailed Classification**: Structured classification with predefined enums and constraints
+  - **Groq Integration**: Uses Gemma 2 9B model for fast, accurate classification
+  - **Pydantic Models**: Structured output validation and type safety
+  - **Interactive UI**: Real-time text classification with immediate results
+
+- `Classification.py`: Basic classification data model with Pydantic:
+
+  - **sentiment**: Free-form sentiment analysis
+  - **aggressiveness**: 1-10 scale for text aggressiveness
+  - **language**: Free-form language detection
+
+- `DetailedClassification.py`: Advanced classification with constrained enums:
+  - **sentiment**: Predefined options (happy, neutral, sad, angry)
+  - **aggressiveness**: 1-5 scale with enum constraints
+  - **language**: Specific language options (spanish, english, french, german, italian)
+
+Key Features:
+
+- Dual classification modes for different use cases
+- Structured output with type validation
+- Fast inference using Groq's Gemma 2 9B model
+- Real-time classification results
+- LangSmith tracing for observability
+- Professional UI with separate result sections
+
+To run the application:
+
+1. Obtain a Groq API key from https://groq.com/
+2. Add `GROQ_API_KEY=your_groq_key` to your `.env` file
+3. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.4\ Classification/app.py`
+
 ### API Development
 
 The `3-API/` directory contains a complete API server setup using FastAPI and LangServe for deploying LangChain applications.
