@@ -76,6 +76,9 @@ The project dependencies are organized into the following categories:
 - pymupdf: Alternative PDF processing library.
 - arxiv: For loading documents from ArXiv.
 - wikipedia: Python library for accessing Wikipedia's API.
+- unstructured: For loading unstructured content from URLs.
+- pytube: For YouTube video processing.
+- youtube-transcript-api: For extracting YouTube transcripts.
 
 ### LLM Providers
 
@@ -90,6 +93,7 @@ The project dependencies are organized into the following categories:
 - uvicorn: ASGI web server implementation for Python.
 - sse_starlette: Server-sent events implementation for Starlette.
 - streamlit: Web framework for creating interactive web applications.
+- validators: For URL validation.
 
 ### Development and Runtime Tools
 
@@ -365,6 +369,68 @@ To run the client application:
 ```bash
 streamlit run 3-API/client.py
 ```
+
+### Summarization Showcase
+
+The `4-Summarization-Showcase/` directory contains a Streamlit web application for summarizing multiple sources including PDFs, YouTube videos, and websites.
+
+- `app.py`: A Streamlit application that allows users to upload PDF files and add URLs (YouTube or websites) for summarization:
+  - **Multi-Source Support**: Handles PDFs, YouTube videos, and web pages
+  - **Document Loading**: Uses PyPDFLoader for PDFs, YoutubeLoader for YouTube, and UnstructuredURLLoader for websites
+  - **Groq Integration**: Uses Llama 3.3 70B model for comprehensive summarization
+  - **Dynamic UI**: Add/remove multiple URLs dynamically
+  - **Comprehensive Summary**: Generates 300-word summaries from all sources combined
+
+Key Features:
+
+- Real-time summarization of diverse content types
+- Fast inference using Groq's Llama 3.3 70B model
+- Combined processing of multiple sources
+- Error handling and validation for URLs
+- LangSmith tracing integration
+
+To run the application:
+
+1. Obtain a Groq API key from https://groq.com/
+2. Add `GROQ_API_KEY=your_groq_key` to your `.env` file
+3. Run the Streamlit app: `streamlit run 4-Summarization-Showcase/app.py`
+
+### Q&A Memory Showcase
+
+The `5-QA-Memory-Showcase/` directory contains a Streamlit web application for document-based question answering with persistent chat memory.
+
+- `app.py`: A comprehensive Q&A application with memory that allows users to chat with their documents:
+
+  - **Document Processing**: Loads and embeds PDF documents using OpenAI embeddings and ChromaDB
+  - **Chat Memory**: Maintains conversation history per user session using SQLite database
+  - **User Sessions**: Supports multiple users with persistent session files
+  - **Retrieval Chain**: Combines document retrieval with Groq's Llama 3.3 70B model for accurate responses
+  - **Interactive UI**: Streamlit interface for document upload, questioning, and history viewing
+  - **Context Display**: Shows relevant document chunks for each answer
+
+- Session files: `*_session.txt` files store user session IDs
+- Database: `chat_history.db` stores chat history in SQLite format
+
+Key Features:
+
+- Real-time document question answering with RAG
+- Persistent chat memory across sessions
+- Multi-user support with session management
+- Fast inference using Groq's Llama 3.3 70B model
+- Context-aware responses based on loaded PDF documents
+- Document similarity search with chunk visualization
+- Performance metrics and error handling
+- LangSmith tracing integration for observability
+
+To run the application:
+
+1. Obtain Groq API key from https://groq.com/ and OpenAI API key from https://platform.openai.com/
+2. Add both API keys to your `.env` file:
+   ```
+   GROQ_API_KEY=your_groq_key
+   OPENAI_API_KEY=your_openai_key
+   ```
+3. Run the Streamlit app: `streamlit run 5-QA-Memory-Showcase/app.py`
 
 ### Agents
 

@@ -212,3 +212,7 @@ chroma_db/
 
 # Others
 docs/
+
+# Session files and chat history
+*_session.txt
+chat_history.db

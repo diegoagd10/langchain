@@ -34,7 +34,11 @@ fastapi
 uvicorn
 sse_starlette
 streamlit
+validators
 
 # Development and Runtime Tools
 ipykernel
 langserve
+unstructured
+pytube
+youtube-transcript-api
