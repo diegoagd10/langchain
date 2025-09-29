@@ -265,9 +265,9 @@ To run the application:
 
 ### Q&A Bot
 
-The `2-Generative AI/2.5 Q&A Bot/` directory contains a Streamlit web application for document-based question answering using Retrieval-Augmented Generation (RAG).
+The `2-Generative AI/2.5 Q&A Bot/` directory contains Streamlit web applications for document-based question answering using Retrieval-Augmented Generation (RAG). The directory includes two variants with different vector storage backends:
 
-- `app.py`: A comprehensive Q&A application that combines document retrieval with Groq's fast inference:
+- `app.py`: A comprehensive Q&A application that combines document retrieval with Groq's fast inference using FAISS vector database:
 
   - **Document Processing**: Loads PDF documents from a `./docs` directory using PyPDFDirectoryLoader
   - **Text Splitting**: Uses RecursiveCharacterTextSplitter to break documents into manageable chunks (1000 chars, 200 overlap)
@@ -300,6 +300,39 @@ To run the application:
 4. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.5\ Q&A\ Bot/app.py`
 
 The application will process your PDF documents and allow you to ask questions about their content with accurate, context-aware responses.
+
+- `app_chroma.py`: An alternative implementation using ChromaDB as the vector database instead of FAISS:
+
+- **Vector Storage**: Uses ChromaDB for document embeddings and similarity search
+- **Same Core Features**: Identical functionality to app.py but with ChromaDB backend
+- **OpenAI Embeddings**: Uses OpenAI's embedding models for document vectorization
+- **Groq Integration**: Leverages Llama 3.3 70B model for fast, accurate responses
+- **Interactive UI**: Same Streamlit interface for document upload and questioning
+- **Document Processing**: Processes PDF documents with 1000-character chunks and 200-character overlap
+- **Performance Tracking**: Displays response generation time and relevant document chunks
+- **Error Handling**: Comprehensive error handling for API keys and document processing
+
+Key Features:
+
+- Real-time document question answering with RAG using ChromaDB
+- Fast inference using Groq's Llama 3.3 70B model
+- Context-aware responses based on loaded PDF documents
+- Document similarity search with chunk visualization
+- Performance metrics and error handling
+- LangSmith tracing integration for observability
+
+To run the ChromaDB variant:
+
+1.  Create a `./docs` directory in your project root and add PDF documents
+2.  Obtain Groq API key from https://groq.com/ and OpenAI API key from https://platform.openai.com/
+3.  Add both API keys to your `.env` file:
+    ```
+    GROQ_API_KEY=your_groq_key
+    OPENAI_API_KEY=your_openai_key
+    ```
+4.  Run the Streamlit app: `streamlit run 2-Generative\ AI/2.5\ Q&A\ Bot/app_chroma.py`
+
+This variant provides the same functionality as the FAISS version but uses ChromaDB's vector storage capabilities, which may offer different performance characteristics and persistence options.
 
 ### API Development
 
