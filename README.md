@@ -76,6 +76,8 @@ The project dependencies are organized into the following categories:
 - pymupdf: Alternative PDF processing library.
 - arxiv: For loading documents from ArXiv.
 - wikipedia: Python library for accessing Wikipedia's API.
+- docling: Advanced document processing and understanding with layout-aware parsing.
+- langchain-docling: LangChain integration for Docling document loader.
 - unstructured: For loading unstructured content from URLs.
 - pytube: For YouTube video processing.
 - youtube-transcript-api: For extracting YouTube transcripts.
@@ -337,6 +339,43 @@ To run the ChromaDB variant:
 4.  Run the Streamlit app: `streamlit run 2-Generative\ AI/2.5\ Q&A\ Bot/app_chroma.py`
 
 This variant provides the same functionality as the FAISS version but uses ChromaDB's vector storage capabilities, which may offer different performance characteristics and persistence options.
+
+- `app_docling.py`: An advanced implementation using Docling for superior document processing and understanding:
+
+  - **Docling Integration**: Uses DoclingLoader with HybridChunker for intelligent document parsing
+  - **Markdown Processing**: Converts documents to markdown format with structured header splitting
+  - **OpenAI Embeddings**: Uses OpenAI's embedding models for document vectorization
+  - **ChromaDB Storage**: Persistent vector storage with collection management
+  - **Smart Chunking**: Hybrid chunking strategy that preserves document structure
+  - **Header-based Splitting**: Uses MarkdownHeaderTextSplitter for semantically meaningful chunks
+  - **Error Handling**: Comprehensive error handling for document processing and API failures
+  - **Performance Tracking**: Displays response generation time and relevant document chunks
+
+  Key Features:
+
+  - Advanced document understanding with Docling's layout-aware processing
+  - Intelligent text chunking that preserves document structure and context
+  - High-quality embeddings using OpenAI's latest models
+  - Persistent vector storage with ChromaDB for fast retrieval
+  - Real-time document question answering with RAG
+  - Fast inference using Groq's Llama 3.3 70B model
+  - Context-aware responses based on loaded PDF documents
+  - Document similarity search with chunk visualization
+  - Performance metrics and comprehensive error handling
+  - LangSmith tracing integration for observability
+
+  To run the Docling variant:
+
+  1. Create a `./docs` directory in your project root and add PDF documents (e.g., `Diego Autism Diagnosis.pdf`)
+  2. Obtain Groq API key from https://groq.com/ and OpenAI API key from https://platform.openai.com/
+  3. Add both API keys to your `.env` file:
+     ```
+     GROQ_API_KEY=your_groq_key
+     OPENAI_API_KEY=your_openai_key
+     ```
+  4. Run the Streamlit app: `streamlit run 2-Generative\ AI/2.5\ Q&A\ Bot/app_docling.py`
+
+  This variant provides superior document understanding through Docling's advanced parsing capabilities, making it ideal for complex documents with rich formatting, tables, and structured content.
 
 ### API Development
 

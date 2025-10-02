@@ -22,6 +22,8 @@ bs4
 pymupdf
 arxiv
 wikipedia
+docling
+langchain-docling
 
 # LLM Providers - Language model integrations
 langchain-openai
